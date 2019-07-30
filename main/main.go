@@ -2,7 +2,7 @@ package main
 
 import "github.com/saberpowermo/leetCodeeeee/question"
 
-func main()  {
-	question.Test7()
+func main()  { 
+	question.Test8()
  }
 
