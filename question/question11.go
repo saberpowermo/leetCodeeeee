@@ -39,7 +39,7 @@ func maxArea(height []int) int {
 		newMax := x * y
 		if newMax > max {
 			max = newMax
-		} 
+		}
 
 		if height[minIndex] > height[maxIndex] {
 			maxIndex--
