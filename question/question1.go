@@ -1,6 +1,8 @@
 package question
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 	给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
@@ -9,10 +11,10 @@ import "fmt"
 	给定 nums = [2, 7, 11, 15], target = 9
 	因为 nums[0] + nums[1] = 2 + 7 = 9
 	所以返回 [0, 1]
- */
+*/
 func Test1() {
-	nums := []int{3, 3}
-	target := 6
+	nums := []int{11, 3, 5, 6, 15}
+	target := 9
 	result := twoSum(nums, target)
 	fmt.Println(result[0])
 	fmt.Println(result[1])
@@ -20,13 +22,16 @@ func Test1() {
 
 func twoSum(nums []int, target int) []int {
 	result := make([]int, 2)
-	for index := range nums {
-		for i := index + 1; i < len(nums); i++ {
-			if nums[index]+nums[i] == target {
-				result[0] = index
-				result[1] = i
-				return result
-			}
+	m := map[int]int{}
+	var interpolation int
+	for index, value := range nums {
+		interpolation = target - value
+		i, ok := m[interpolation]
+		if ok {
+			result[0] = i
+			result[1] = index
+		} else {
+			m[value] = index
 		}
 	}
 	return result
