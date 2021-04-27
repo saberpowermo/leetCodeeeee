@@ -46,12 +46,13 @@ func Test2021427() {
  *     Right *TreeNode
  * }
  */
+
+// 解题思路： 只需要考虑当前节点就行，小于最小的 就往左偏移，大于最大的就往最右偏移，否则就是当前节点加自己的左右子节点。
 func rangeSumBST(root *TreeNode, low int, high int) int {
 	if root == nil {
 		return 0
 	}
-
-	if root.Val < low {
+ 	if root.Val < low {
 		return rangeSumBST(root.Right, low, high)
 	}
 	if root.Val > high {
